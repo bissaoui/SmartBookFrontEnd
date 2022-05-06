@@ -12,6 +12,7 @@
 </template>
 <script>
 import axios from 'axios';
+
 export default {
     name : 'LogiN',
     data(){
@@ -31,10 +32,26 @@ export default {
                'Content-Type': 'multipart/form-data'}
            }
           );
-                    localStorage.setItem('token',response.data.access_token)
-                    localStorage.setItem('username',this.username)
-            this.$router.push("/")
-        }
+          localStorage.setItem('token',response.data.access_token)
+          localStorage.setItem('username',this.username)
+          console.log(response.data)
+
+    
+       if (response){
+         
+          const responser =  await axios.post('api/user',{
+                username : this.username
+          },
+          {headers:
+           {
+               'Content-Type': 'multipart/form-data'}
+           }
+          );
+                  console.log(responser.data)
+
+         this.$router.push("/")
+       }
+       }
 
     }
 }

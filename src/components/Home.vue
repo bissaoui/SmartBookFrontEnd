@@ -5,28 +5,13 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
+import {mapGetters} from 'vuex'
+
 export default {
     name : 'HomE',
-    data() {
-        return {
-            user : null
-        }
-    },
-    async created(){
-            const response = await axios.post('api/user',{
-                username : localStorage.getItem('username')
-          },
-          {headers:
-           {
-               'Content-Type': 'multipart/form-data'}
-           }
-          );
-
-            this.user=response.data
-                    console.log(response.data) 
-
-    }
+  computed :{
+      ...mapGetters(['user'])
+    }  
 }
 </script>
 <style scoped>
