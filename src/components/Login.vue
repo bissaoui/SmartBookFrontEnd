@@ -18,11 +18,13 @@ export default {
     data(){
         return {
             username:'',
-            password:''
+            password:'',
         }
     },
     methods :{
-      async  handleSubmit(){
+    
+    async  handleSubmit(){
+
           const response = await axios.post('api/login',{
         username : this.username,
         password : this.password,
@@ -31,10 +33,22 @@ export default {
            {
                'Content-Type': 'multipart/form-data'}
            }
-          );
+          ).catch(  function (error) {
+    if (error.response) {
+      console.log(error.response.status);
+
+       if(error.response.status!='200'){
+         //this.$router.go(0);
+
+      }
+    }
+  })
+  
           localStorage.setItem('token',response.data.access_token)
           localStorage.setItem('username',this.username)
-          console.log(response.data)
+
+          
+        //  console.log(response.status)
 
     
        if (response){
@@ -44,13 +58,16 @@ export default {
           },
           {headers:
            {
-               'Content-Type': 'multipart/form-data'}
+               'Content-Type': 'multipart/form-data',
+               'Authorization':''}
            }
           );
-                  console.log(responser.data)
+                  console.log(responser.status)
 
-         this.$router.push("/")
+       
        }
+         this.$router.push("/")
+         this.$router.go(0);
        }
 
     }

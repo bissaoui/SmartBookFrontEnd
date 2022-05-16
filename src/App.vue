@@ -29,9 +29,10 @@ export default {
                'Content-Type': 'multipart/form-data'}
            }
           );
+
            this.$store.dispatch('user',response.data)
 
-            console.log(this.user) 
+           console.log(response.data) 
 }
     }
 }
