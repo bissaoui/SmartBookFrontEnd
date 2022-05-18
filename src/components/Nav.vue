@@ -12,8 +12,17 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto" v-if="user">
+             <li class="nav-item">
+              <router-link to="/newBook"  class="nav-link">Create SmartBook</router-link>
+            </li>
+               <li class="nav-item">
+              <a href="/ListSmart"  class="nav-link">All My SmartBook</a>
+            </li>
+               <li class="nav-item">
+              <a href="/Scanned"  class="nav-link">SmartBook Scaned</a>
+            </li>
             <li class="nav-item">
-              <a href="javascript:void(0)" @click="handleClick" class="nav-link">Logout</a>
+              <a href="" @click="handleClick" class="nav-link">Logout</a>
             </li>
             
           </ul>

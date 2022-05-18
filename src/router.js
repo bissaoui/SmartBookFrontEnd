@@ -6,6 +6,8 @@ import Register from './components/Register.vue'
 import CreateSmart from './components/CreateSmart.vue'
 import DetailSmart from './components/DetailSmart.vue'
 import ListSmart from './components/ListSmart.vue'
+import ScanerQr from './components/ScanerQrCam.vue'
+import ListScanned from './components/ListScanned.vue'
 
 export default new Router({
   mode: 'history',
@@ -63,6 +65,20 @@ export default new Router({
           next('/');
         }
       }
+    }, {
+      path: '/Scanned',
+      component: ListScanned,
+      beforeEnter: (to, from, next) => {
+        if (localStorage.getItem('token')) {
+          next();
+          console.log(localStorage.getItem('token'))
+        } else {
+          next('/');
+        }
+      }
+    },{
+      path: '/ScanerQr',
+      component: ScanerQr,
     },
   ]
 })

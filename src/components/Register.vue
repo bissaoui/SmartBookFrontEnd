@@ -37,9 +37,9 @@ export default {
         nom : this.nom,
         prenom : this.prenom,
         password : this.password,
-        email : this.email,
-      }),{headers: {'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'}});
+        email : this.email
+              }),{headers: {'Content-Type': 'application/json',
+      'Authorization': ''}});
        
        console.log(response)
 
